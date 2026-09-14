@@ -301,7 +301,7 @@
       result.innerHTML = "Vorsicht, Produkt gehört Theo" +
         "<span class=\"sub\">„" + escapeHtml(raw.trim()) + "\" gehört zur Unternehmensgruppe Theo Müller.</span>";
     } else {
-      body.classList.add("result-clean");
+      body.classList.add("rainbow-box");
       var sub = notTheoNote || ("„" + escapeHtml(raw.trim()) + "\" steht nicht auf unserer Liste der Theo-Müller-Marken.");
       result.innerHTML = "Glückwunsch, du hast ein sauberes Produkt." +
         "<span class=\"sub\">" + sub + "</span>";
