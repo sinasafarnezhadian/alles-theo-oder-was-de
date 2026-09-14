@@ -197,8 +197,10 @@
         id="brand-input"
         placeholder="Marke eingeben, z. B. Weihenstephan…"
         autocomplete="off"
+        list="brand-suggestions"
         autofocus
       />
+      <datalist id="brand-suggestions"></datalist>
       <button type="submit">prüfen</button>
     </form>
 
@@ -277,16 +279,52 @@
   }
 
   function findEntry(index, needle) {
+    if (needle.length < 2) return null;
     if (index[needle]) return index[needle];
     var found = null;
     Object.keys(index).some(function (key) {
-      if (needle.includes(key) || key.includes(needle)) {
+      // Ganzer Alias steckt im Suchbegriff (z. B. "Müllermilch Erdbeere 500g")
+      // oder der Suchbegriff trifft ein komplettes Wort eines mehrteiligen Alias
+      // (z. B. "Loose" in "Käserei Loose"). Kein beliebiges Teilstring-Matching,
+      // sonst treffen kurze Eingaben zufällig auf Fragmente wie "as" in "Fast Fruit".
+      if (needle.includes(key)) {
+        found = index[key];
+        return true;
+      }
+      var tokens = key.split(/[\s/]+/).filter(Boolean);
+      if (tokens.indexOf(needle) !== -1) {
         found = index[key];
         return true;
       }
       return false;
     });
     return found;
+  }
+
+  // Aliase liegen in data/marken.json kleingeschrieben vor (fürs Matching);
+  // für die Anzeige komplett kleingeschriebene Wörter groß beginnen lassen,
+  // bereits gemischte Schreibweisen (z. B. "T.M.A.", "LÜNEbest") unangetastet lassen.
+  function displayCase(str) {
+    return str.split(" ").map(function (word) {
+      return word === word.toLowerCase()
+        ? word.charAt(0).toUpperCase() + word.slice(1)
+        : word;
+    }).join(" ");
+  }
+
+  function fillSuggestions(brands) {
+    var names = [];
+    brands.forEach(function (entry) {
+      names.push(entry.name);
+      (entry.aliases || []).forEach(function (alias) { names.push(displayCase(alias)); });
+    });
+    names.sort(function (a, b) { return a.localeCompare(b, "de"); });
+    var datalist = document.getElementById("brand-suggestions");
+    var html = "";
+    names.forEach(function (name) {
+      html += "<option value=\"" + escapeHtml(name) + "\"></option>";
+    });
+    datalist.innerHTML = html;
   }
 
   button.disabled = true;
@@ -300,6 +338,7 @@
     .then(function (data) {
       indexEntries(theoIndex, data.brands || []);
       indexEntries(notTheoIndex, data.not_theo || []);
+      fillSuggestions(data.brands || []);
       button.disabled = false;
       input.placeholder = "Marke eingeben, z. B. Weihenstephan…";
     })
