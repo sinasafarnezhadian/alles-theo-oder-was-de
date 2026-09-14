@@ -197,6 +197,7 @@
         id="brand-input"
         placeholder="Marke eingeben, z. B. Weihenstephan…"
         autocomplete="off"
+        list="brand-suggestions"
         autofocus
       />
       <datalist id="brand-suggestions"></datalist>
@@ -325,15 +326,6 @@
     });
     datalist.innerHTML = html;
   }
-
-  // Vorschlagsliste erst ab 2 eingegebenen Zeichen anzeigen
-  input.addEventListener("input", function () {
-    if (input.value.trim().length >= 2) {
-      input.setAttribute("list", "brand-suggestions");
-    } else {
-      input.removeAttribute("list");
-    }
-  });
 
   button.disabled = true;
   input.placeholder = "Marken werden geladen…";
