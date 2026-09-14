@@ -26,14 +26,20 @@
     color: var(--text);
     transition: background-color .35s ease, color .35s ease;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
   }
   body.result-clean{ background: var(--green-bg); color: var(--green-text); }
   body.result-theo{ background: var(--blue-bg); color: var(--blue-text); }
 
   .wrap{
     max-width: 680px;
+    width: 100%;
     margin: 0 auto;
     padding-inline: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
   }
   header{
     text-align: center;
@@ -126,7 +132,8 @@
   }
 
   footer{
-    margin-top: 40px;
+    margin-top: auto;
+    padding-top: 40px;
     text-align: center;
     font-size: 0.78rem;
     color: var(--muted);
@@ -140,6 +147,19 @@
       <h1>alles Theo, oder was?!</h1>
       <p class="claim">Wem gehört eigentlich deine Marke?</p>
     </header>
+
+    <form id="check-form">
+      <input
+        type="text"
+        id="brand-input"
+        placeholder="Marke eingeben, z. B. Weihenstephan…"
+        autocomplete="off"
+        autofocus
+      />
+      <button type="submit">prüfen</button>
+    </form>
+
+    <div class="result" id="result"></div>
 
     <div class="intro" id="intro">
       <p>
@@ -165,19 +185,6 @@
         </ol>
       </div>
     </div>
-
-    <form id="check-form">
-      <input
-        type="text"
-        id="brand-input"
-        placeholder="Marke eingeben, z. B. Weihenstephan…"
-        autocomplete="off"
-        autofocus
-      />
-      <button type="submit">prüfen</button>
-    </form>
-
-    <div class="result" id="result"></div>
 
     <footer>
       Datenbasis: recherchierte Markenliste der Unternehmensgruppe Theo Müller,
