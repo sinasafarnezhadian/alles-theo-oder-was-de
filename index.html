@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>alles Theo, oder was?!</title>
+<style>
+  :root{
+    --bg: #f4f1ea;
+    --text: #1f1c16;
+    --muted: #6b6559;
+    --card: #ffffff;
+    --border: #e2ddd0;
+    --accent: #1f1c16;
+    --green-bg: #1f7a4d;
+    --green-text: #ffffff;
+    --blue-bg: #1c3fae;
+    --blue-text: #ffffff;
+  }
+  * { box-sizing: border-box; }
+  body{
+    margin: 0;
+    padding-block: 32px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: background-color .35s ease, color .35s ease;
+    min-height: 100vh;
+  }
+  body.result-clean{ background: var(--green-bg); color: var(--green-text); }
+  body.result-theo{ background: var(--blue-bg); color: var(--blue-text); }
+
+  .wrap{
+    max-width: 680px;
+    margin: 0 auto;
+    padding-inline: 20px;
+  }
+  header{
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  h1{
+    font-size: clamp(2rem, 6vw, 2.8rem);
+    margin: 0 0 8px;
+    letter-spacing: -0.02em;
+  }
+  .claim{
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+    opacity: 0.85;
+  }
+  .intro{
+    background: var(--card);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px 22px;
+    margin-bottom: 28px;
+    line-height: 1.55;
+    font-size: 0.98rem;
+    transition: opacity .35s ease;
+  }
+  .intro p{ margin: 0 0 12px; }
+  .intro p:last-child{ margin-bottom: 0; }
+  .sources{
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+  .sources ol{ margin: 6px 0 0; padding-left: 18px; }
+  .sources a{ color: inherit; }
+
+  form{
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  input[type="text"]{
+    width: 100%;
+    font-size: 1.3rem;
+    padding: 18px 20px;
+    border-radius: 12px;
+    border: 2px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+    outline: none;
+  }
+  input[type="text"]:focus{
+    border-color: var(--accent);
+  }
+  body.result-clean input[type="text"]{ border-color: rgba(255,255,255,0.6); }
+  body.result-theo input[type="text"]{ border-color: rgba(255,255,255,0.6); }
+
+  button{
+    font-size: 1.25rem;
+    font-weight: 700;
+    padding: 18px 20px;
+    border-radius: 12px;
+    border: none;
+    background: var(--accent);
+    color: #fff;
+    cursor: pointer;
+  }
+  button:hover{ opacity: 0.92; }
+  body.result-clean button{ background: #ffffff; color: var(--green-bg); }
+  body.result-theo button{ background: #ffffff; color: var(--blue-bg); }
+
+  .result{
+    margin-top: 26px;
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 800;
+    display: none;
+    line-height: 1.4;
+  }
+  .result.visible{ display: block; }
+  .result .sub{
+    display: block;
+    margin-top: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    opacity: 0.9;
+  }
+
+  footer{
+    margin-top: 40px;
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+  body.result-clean footer, body.result-theo footer{ color: rgba(255,255,255,0.75); }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>alles Theo, oder was?!</h1>
+      <p class="claim">Wem gehört eigentlich deine Marke?</p>
+    </header>
+
+    <div class="intro" id="intro">
+      <p>
+        Theo Müller, Gründer und Kopf der Unternehmensgruppe hinter Müllermilch,
+        hat sich öffentlich für eine Koalition aus CDU/CSU und AfD ausgesprochen.
+        Mit Blick auf ein mögliches „Schwarz-Blau" sagte er sinngemäß, Deutschland
+        wäre damit „bald saniert" – und forderte unter anderem eine Schulden­bremse,
+        das Ende der Energiewende, den Abbau von Subventionen, eine restriktivere
+        Migrationspolitik sowie das Ende der Unterstützung für die Ukraine.
+      </p>
+      <p>
+        Wer solche Aussagen nicht mit seinem Einkauf unterstützen will, steht vor
+        einem Problem: Die Unternehmensgruppe Theo Müller steckt hinter deutlich
+        mehr Marken als nur „Müllermilch". Diese App hilft, das im Supermarkt
+        schnell zu prüfen.
+      </p>
+      <div class="sources">
+        Quellen:
+        <ol>
+          <li><a href="https://www.focus.de/politik/deutschland/mueller-schwarz-und-blau-deutschland-waere-bald-saniert_be82a329-1d35-4396-afaf-3535fdc8748a.html" target="_blank" rel="noopener">Focus Online: „Müller: Schwarz und Blau – Deutschland wäre bald saniert"</a></li>
+          <li><a href="https://deutschlandkurier.de/2026/09/milchbaron-theo-mueller-schwarz-blau-dann-waere-deutschland-bald-saniert/" target="_blank" rel="noopener">Deutschland-Kurier: „Milchbaron" Theo Müller: „Schwarz-Blau – dann wäre Deutschland bald saniert!"</a></li>
+          <li><a href="https://www.t-online.de/nachrichten/deutschland/parteien/id_101432518/afd-sieg-sachsen-anhalt-theo-mueller-nennt-ergebnis-gluecksfall-.html" target="_blank" rel="noopener">t-online: AfD-Sieg Sachsen-Anhalt – Theo Müller nennt Ergebnis „Glücksfall"</a></li>
+        </ol>
+      </div>
+    </div>
+
+    <form id="check-form">
+      <input
+        type="text"
+        id="brand-input"
+        placeholder="Marke eingeben, z. B. Weihenstephan…"
+        autocomplete="off"
+        autofocus
+      />
+      <button type="submit">prüfen</button>
+    </form>
+
+    <div class="result" id="result"></div>
+
+    <footer>
+      Datenbasis: recherchierte Markenliste der Unternehmensgruppe Theo Müller,
+      Stand 14.09.2026. Ohne Gewähr auf Vollständigkeit – Konzernstrukturen
+      und Übernahmen ändern sich.
+    </footer>
+  </div>
+
+<script>
+(function () {
+  // Marken der Unternehmensgruppe Theo Müller (siehe mueller_marken.md)
+  var theoBrands = [
+    "müller", "müllermilch", "muellermilch",
+    "weihenstephan",
+    "sachsenmilch",
+    "landliebe",
+    "käserei loose", "kaeserei loose", "loose",
+    "bönsel", "boensel",
+    "harzbube",
+    "rusack",
+    "almhof",
+    "elinas",
+    "lünebest", "luenebest",
+    "biotiful gut health", "biotiful",
+    "homann",
+    "nadler",
+    "hamker",
+    "nordsee",
+    "weser-feinkost", "weser feinkost",
+    "lisner",
+    "nordfish",
+    "polarica",
+    "graal",
+    "berief",
+    "culina group", "culina",
+    "milk & more", "milk and more", "milk&more",
+    "naturfarm",
+    "optipack",
+    "fahrzeugtechnik aretsried"
+  ];
+
+  // Bekannte Verwechslungen: NICHT Teil der Unternehmensgruppe Theo Müller
+  var notTheoBrands = {
+    "müller drogeriemarkt": "Das ist die Drogeriekette Müller Handels GmbH & Co. KG – ein eigenständiges Unternehmen, keine Marke von Theo Müller.",
+    "mueller drogeriemarkt": "Das ist die Drogeriekette Müller Handels GmbH & Co. KG – ein eigenständiges Unternehmen, keine Marke von Theo Müller.",
+    "müller drogerie": "Das ist die Drogeriekette Müller Handels GmbH & Co. KG – ein eigenständiges Unternehmen, keine Marke von Theo Müller.",
+    "drogeriemarkt müller": "Das ist die Drogeriekette Müller Handels GmbH & Co. KG – ein eigenständiges Unternehmen, keine Marke von Theo Müller.",
+    "aveo": "Das ist eine Eigenmarke der Drogeriekette Müller – nicht der Unternehmensgruppe Theo Müller.",
+    "body&soul": "Das ist eine Eigenmarke der Drogeriekette Müller – nicht der Unternehmensgruppe Theo Müller.",
+    "body & soul": "Das ist eine Eigenmarke der Drogeriekette Müller – nicht der Unternehmensgruppe Theo Müller.",
+    "terra naturi": "Das ist eine Eigenmarke der Drogeriekette Müller – nicht der Unternehmensgruppe Theo Müller.",
+    "beauty baby": "Das ist eine Eigenmarke der Drogeriekette Müller – nicht der Unternehmensgruppe Theo Müller."
+  };
+
+  function normalize(str) {
+    return str
+      .toLowerCase()
+      .trim()
+      .normalize("NFKD")
+      .replace(/[̀-ͯ]/g, "") // Akzente entfernen
+      .replace(/ä/g, "ae").replace(/ö/g, "oe").replace(/ü/g, "ue").replace(/ß/g, "ss")
+      .replace(/\s+/g, " ");
+  }
+
+  var normalizedTheoBrands = theoBrands.map(normalize);
+  var normalizedNotTheo = {};
+  Object.keys(notTheoBrands).forEach(function (key) {
+    normalizedNotTheo[normalize(key)] = notTheoBrands[key];
+  });
+
+  function matches(list, needle) {
+    return list.some(function (brand) {
+      return brand === needle || needle.includes(brand) || brand.includes(needle);
+    });
+  }
+
+  var form = document.getElementById("check-form");
+  var input = document.getElementById("brand-input");
+  var result = document.getElementById("result");
+  var body = document.body;
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var raw = input.value;
+    if (!raw.trim()) return;
+
+    var needle = normalize(raw);
+
+    body.classList.remove("result-clean", "result-theo");
+    result.classList.remove("visible");
+
+    var notTheoNote = normalizedNotTheo[needle];
+    var isTheo = !notTheoNote && matches(normalizedTheoBrands, needle);
+
+    if (isTheo) {
+      body.classList.add("result-theo");
+      result.innerHTML = "Vorsicht, Produkt gehört Theo" +
+        "<span class=\"sub\">„" + escapeHtml(raw.trim()) + "\" gehört zur Unternehmensgruppe Theo Müller.</span>";
+    } else {
+      body.classList.add("result-clean");
+      var sub = notTheoNote || ("„" + escapeHtml(raw.trim()) + "\" steht nicht auf unserer Liste der Theo-Müller-Marken.");
+      result.innerHTML = "Glückwunsch, du hast ein sauberes Produkt." +
+        "<span class=\"sub\">" + sub + "</span>";
+    }
+
+    result.classList.add("visible");
+  });
+
+  function escapeHtml(str) {
+    var div = document.createElement("div");
+    div.textContent = str;
+    return div.innerHTML;
+  }
+})();
+</script>
+</body>
+</html>
