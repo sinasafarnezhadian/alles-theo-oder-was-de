@@ -197,8 +197,10 @@
         id="brand-input"
         placeholder="Marke eingeben, z. B. Weihenstephan…"
         autocomplete="off"
+        list="brand-suggestions"
         autofocus
       />
+      <datalist id="brand-suggestions"></datalist>
       <button type="submit">prüfen</button>
     </form>
 
@@ -299,6 +301,32 @@
     return found;
   }
 
+  // Aliase liegen in data/marken.json kleingeschrieben vor (fürs Matching);
+  // für die Anzeige komplett kleingeschriebene Wörter groß beginnen lassen,
+  // bereits gemischte Schreibweisen (z. B. "T.M.A.", "LÜNEbest") unangetastet lassen.
+  function displayCase(str) {
+    return str.split(" ").map(function (word) {
+      return word === word.toLowerCase()
+        ? word.charAt(0).toUpperCase() + word.slice(1)
+        : word;
+    }).join(" ");
+  }
+
+  function fillSuggestions(brands) {
+    var names = [];
+    brands.forEach(function (entry) {
+      names.push(entry.name);
+      (entry.aliases || []).forEach(function (alias) { names.push(displayCase(alias)); });
+    });
+    names.sort(function (a, b) { return a.localeCompare(b, "de"); });
+    var datalist = document.getElementById("brand-suggestions");
+    var html = "";
+    names.forEach(function (name) {
+      html += "<option value=\"" + escapeHtml(name) + "\"></option>";
+    });
+    datalist.innerHTML = html;
+  }
+
   button.disabled = true;
   input.placeholder = "Marken werden geladen…";
 
@@ -310,6 +338,7 @@
     .then(function (data) {
       indexEntries(theoIndex, data.brands || []);
       indexEntries(notTheoIndex, data.not_theo || []);
+      fillSuggestions(data.brands || []);
       button.disabled = false;
       input.placeholder = "Marke eingeben, z. B. Weihenstephan…";
     })
