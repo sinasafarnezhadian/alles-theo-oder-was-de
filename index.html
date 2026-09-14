@@ -151,6 +151,16 @@
     font-weight: 500;
     opacity: 0.9;
   }
+  .result .report{
+    display: block;
+    margin-top: 14px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    opacity: 0.75;
+  }
+  .result .report a{
+    color: inherit;
+  }
 
   footer{
     padding-top: 40px;
@@ -281,6 +291,8 @@
     });
   }
 
+  var ISSUES_URL = "https://github.com/sinasafarnezhadian/alles-theo-oder-was-de/issues";
+
   var form = document.getElementById("check-form");
   var input = document.getElementById("brand-input");
   var result = document.getElementById("result");
@@ -298,16 +310,19 @@
 
     var notTheoNote = normalizedNotTheo[needle];
     var isTheo = !notTheoNote && matches(normalizedTheoBrands, needle);
+    var reportHint = "<span class=\"report\">Ergebnis stimmt nicht? <a href=\"" + ISSUES_URL + "\" target=\"_blank\" rel=\"noopener\">Hier melden</a></span>";
 
     if (isTheo) {
       body.classList.add("result-theo");
       result.innerHTML = "Vorsicht, Produkt gehört Theo" +
-        "<span class=\"sub\">„" + escapeHtml(raw.trim()) + "\" gehört zur Unternehmensgruppe Theo Müller.</span>";
+        "<span class=\"sub\">„" + escapeHtml(raw.trim()) + "\" gehört zur Unternehmensgruppe Theo Müller.</span>" +
+        reportHint;
     } else {
       body.classList.add("rainbow-box");
       var sub = notTheoNote || ("„" + escapeHtml(raw.trim()) + "\" steht nicht auf unserer Liste der Theo-Müller-Marken.");
       result.innerHTML = "Glückwunsch, du hast ein sauberes Produkt." +
-        "<span class=\"sub\">" + sub + "</span>";
+        "<span class=\"sub\">" + sub + "</span>" +
+        reportHint;
     }
 
     result.classList.add("visible");
