@@ -1,0 +1,222 @@
+{
+  "stand": "14.09.2026",
+  "quelle_datei": "marken.md",
+  "brands": [
+    {
+      "name": "Müller / Müllermilch",
+      "category": "Molkereiprodukte",
+      "company": "Molkerei Alois Müller GmbH & Co. KG, Fischach",
+      "note": "Ursprung der Unternehmensgruppe, Stammsitz Aretsried",
+      "aliases": [
+        "müller", "müllermilch", "müllerdrink", "müllerdrink vegan", "müllermilch energy",
+        "müller triple", "müller mini", "müller soffio", "müller mix", "müllermix",
+        "müller fusion", "müller innovate", "müller nature", "müller vegan", "müller grow",
+        "müller vitality", "müller simply", "müllerlight", "müllercreme", "müller pudding",
+        "müller milchreis", "müllerice", "müller bumi", "müller fitness molke", "müller de luxe",
+        "müller ecke de luxe", "müller dairy", "müller yogz", "yogz", "müller crema di yogurt",
+        "joghurt mit der ecke", "müller ecken", "müller joghurt ecken", "corner", "froop",
+        "froop naturgenuss", "froop tropic", "froop actidrink", "bianco", "amore", "riso",
+        "cremadiso", "cultiwell", "procult", "procult3", "fructiv", "vitaplus", "vitaballs",
+        "spresh", "sunnyside", "juicy energy", "fruity vibes", "fast fruit", "fruchtalarm",
+        "schoko stars", "schoko taler", "knusperkuss", "milchsandwich", "peppo", "akrobat",
+        "muskulus", "farmday", "yoday", "püd", "linio", "grácie", "mein morgen", "fruetto",
+        "maxmilk", "doppel-decker", "wolkinis", "kefit", "kefir kult", "kalinka kefir",
+        "müller reine buttermilch", "müller frucht buttermilch", "müller allgäuer dickmilch",
+        "rudis weihnacht", "rudis knusperhäuschen", "eichhörnchens schatz", "piraten abenteuer",
+        "western abenteuer", "cleopatra", "little stars", "müller little stars", "müller stars",
+        "müller vegan"
+      ]
+    },
+    {
+      "name": "Weihenstephan",
+      "category": "Molkereiprodukte",
+      "company": "Molkerei Weihenstephan GmbH & Co. KG, Freising",
+      "aliases": [
+        "weihenstephan joghurtzeit", "weihenstephan alpenmilch", "weihenstephan die streichzarte",
+        "weihenstephan kleine vielfalt", "vivity", "reisechecker", "bergbuttermilch",
+        "bergtopfen", "die blaue linie", "yovida", "yovello", "shape"
+      ]
+    },
+    {
+      "name": "Sachsenmilch",
+      "category": "Molkereiprodukte",
+      "company": "Sachsenmilch Leppersdorf GmbH",
+      "note": "Standort Leppersdorf",
+      "aliases": [
+        "elbdammer", "melkdammer", "irishmore", "germanlac", "germanmicell", "milchmonster",
+        "matino", "belsagio", "infantose", "käsemeister", "nade", "plenova", "mwi germanprot",
+        "sachsentraum", "sachsenmilch santee", "milk & whey ingredients", "milk and whey ingredients"
+      ]
+    },
+    {
+      "name": "Landliebe",
+      "category": "Molkereiprodukte",
+      "company": "Molkerei Alois Müller GmbH & Co. KG (Marke)",
+      "note": "inkl. Puddis, Südmilch, Mondelice (seit April 2023 Teil der Unternehmensgruppe)",
+      "aliases": ["puddis", "südmilch", "mondelice"]
+    },
+    {
+      "name": "Elinas",
+      "category": "Molkereiprodukte",
+      "company": "Molkerei Alois Müller GmbH & Co. KG (Marke)",
+      "note": "Joghurt griechischer Art"
+    },
+    {
+      "name": "Lünebest",
+      "category": "Molkereiprodukte",
+      "note": "Seit März 2026 Teil der Unternehmensgruppe",
+      "aliases": ["lünebest dikmelk"]
+    },
+    {
+      "name": "Müller UK & Ireland",
+      "category": "Molkereiprodukte",
+      "note": "Müller Yogurt & Desserts, Müller Milk & Ingredients",
+      "aliases": ["müller yogurt & desserts", "müller milk & ingredients"]
+    },
+    {
+      "name": "Biotiful",
+      "category": "Molkereiprodukte",
+      "note": "Kefir, seit 2025 Teil der Unternehmensgruppe",
+      "aliases": ["biotiful gut health"]
+    },
+    {
+      "name": "Müller International",
+      "category": "Molkereiprodukte",
+      "note": "U. a. Australien, China, Israel, Italien, Niederlande, Polen, Rumänien, Tschechien"
+    },
+    {
+      "name": "Almhof",
+      "category": "Molkereiprodukte",
+      "note": "Niederlande, seit 2004 Teil der Unternehmensgruppe; auch pflanzliche Desserts"
+    },
+    {
+      "name": "Käserei Loose",
+      "category": "Molkereiprodukte",
+      "company": "Käserei Loose GmbH & Co. KG, Wachau/Leppersdorf",
+      "aliases": [
+        "loose", "loose hausmacher", "quäse", "quase", "quäse hausmacher", "quäse rustica",
+        "drilling", "katengold", "esko", "edeltanne", "vaters sorte", "loosee", "maloo",
+        "harzer happen", "käse-streich", "kleehof"
+      ]
+    },
+    {
+      "name": "Harzbube",
+      "category": "Molkereiprodukte",
+      "note": "Käse aus Tradition, Teil der Käserei Loose"
+    },
+    {
+      "name": "Bönsel",
+      "category": "Molkereiprodukte",
+      "note": "Seit 2002 Teil der Käserei Loose"
+    },
+    {
+      "name": "T.M.A.",
+      "category": "Molkereiprodukte",
+      "note": "Handelseigenmarken"
+    },
+    {
+      "name": "Pragolaktos",
+      "category": "Molkereiprodukte",
+      "note": "Mlékárna Pragolaktos, Tschechien"
+    },
+    {
+      "name": "Rusack",
+      "category": "Molkereiprodukte",
+      "note": "Käsetradition seit 1915, Käserei Rusack"
+    },
+    {
+      "name": "Lisner",
+      "category": "Fisch & Feinkost, Dressings & Saucen",
+      "note": "Seit 2010 Teil von Homann; Competence Center Fisch in Poznań"
+    },
+    {
+      "name": "Graal",
+      "category": "Fisch & Feinkost, Dressings & Saucen",
+      "note": "Akquisition der polnischen Graal-Gruppe Ende 2024",
+      "aliases": ["neptun", "mealbox", "kuchnia staropolska"]
+    },
+    {
+      "name": "Homann",
+      "category": "Fisch & Feinkost, Dressings & Saucen",
+      "company": "HOMANN Feinkost GmbH, Bad Essen",
+      "note": "Gegründet 1876; führt auch Nadler, Hamker und Lisner-Marken",
+      "aliases": [
+        "homann vital", "homannaise", "homann food market", "homann snack-pack", "coolinary",
+        "homilla", "fishers corner", "fishers bazar", "el capitano", "concept court",
+        "fischetta", "fisch fantasy", "finessa", "bauern-krone", "edella", "frittosa",
+        "hako", "lord", "olivella", "optimar", "jogtail", "höllen-röllchen", "salad love",
+        "frucht express"
+      ]
+    },
+    {
+      "name": "Nadler",
+      "category": "Fisch & Feinkost, Dressings & Saucen",
+      "note": "Gegründet 1926, Teil der HOMANN-Gruppe",
+      "aliases": ["nadler salat zeit", "das beste geben"]
+    },
+    {
+      "name": "Hamker",
+      "category": "Fisch & Feinkost, Dressings & Saucen",
+      "note": "Seit 2008 Tochterunternehmen von Homann"
+    },
+    {
+      "name": "Nordsee",
+      "category": "Fisch & Feinkost, Dressings & Saucen",
+      "note": "Seit 2015 als Lizenznehmer über Homann"
+    },
+    {
+      "name": "Culina Group",
+      "category": "Logistik & Dienstleistungen",
+      "note": "Britische FMCG-/Food-Retail-Logistik",
+      "aliases": ["culina logistics", "culina"]
+    },
+    {
+      "name": "Fahrzeugtechnik Aretsried",
+      "category": "Logistik & Dienstleistungen",
+      "note": "Mercedes-Benz Servicepartner",
+      "aliases": ["fta"]
+    },
+    {
+      "name": "Naturfarm",
+      "category": "Logistik & Dienstleistungen",
+      "note": "Fruchtzubereitungen"
+    },
+    {
+      "name": "Optipack",
+      "category": "Logistik & Dienstleistungen",
+      "note": "Kunststoffbecher / Verpackung"
+    },
+    {
+      "name": "Berief",
+      "category": "Pflanzliche Alternativen",
+      "note": "Tofu und pflanzliche Drinks, Neuzugang 2026"
+    }
+  ],
+  "not_theo": [
+    {
+      "name": "Müller Drogeriemarkt",
+      "aliases": ["müller drogeriemarkt", "müller drogerie", "drogeriemarkt müller"],
+      "note": "Das ist die Drogeriekette Müller Handels GmbH & Co. KG – ein eigenständiges Unternehmen, keine Marke von Theo Müller."
+    },
+    {
+      "name": "Aveo",
+      "aliases": ["aveo"],
+      "note": "Das ist eine Eigenmarke der Drogeriekette Müller – nicht der Unternehmensgruppe Theo Müller."
+    },
+    {
+      "name": "Body&Soul",
+      "aliases": ["body&soul", "body & soul"],
+      "note": "Das ist eine Eigenmarke der Drogeriekette Müller – nicht der Unternehmensgruppe Theo Müller."
+    },
+    {
+      "name": "Terra Naturi",
+      "aliases": ["terra naturi"],
+      "note": "Das ist eine Eigenmarke der Drogeriekette Müller – nicht der Unternehmensgruppe Theo Müller."
+    },
+    {
+      "name": "Beauty Baby",
+      "aliases": ["beauty baby"],
+      "note": "Das ist eine Eigenmarke der Drogeriekette Müller – nicht der Unternehmensgruppe Theo Müller."
+    }
+  ]
+}

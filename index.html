@@ -162,6 +162,17 @@
   .result .report a{
     color: inherit;
   }
+  .result .details{
+    display: block;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    font-size: 0.85rem;
+    font-weight: 500;
+    line-height: 1.5;
+    opacity: 0.85;
+  }
+  .result .details strong{ font-weight: 700; }
 
   footer{
     padding-top: 40px;
@@ -169,6 +180,7 @@
     font-size: 0.78rem;
     color: var(--muted);
   }
+  footer a{ color: inherit; text-decoration-color: currentColor; }
   body.result-clean footer, body.result-theo footer{ color: rgba(255,255,255,0.75); }
 </style>
 </head>
@@ -218,57 +230,16 @@
     </div>
 
     <footer>
-      Datenbasis: recherchierte Markenliste der Unternehmensgruppe Theo Müller,
-      Stand 14.09.2026. Ohne Gewähr auf Vollständigkeit – Konzernstrukturen
-      und Übernahmen ändern sich.
+      Datenbasis: <a href="marken.md" target="_blank" rel="noopener">recherchierte Markenliste</a>
+      der Unternehmensgruppe Theo Müller, Stand 14.09.2026. Ohne Gewähr auf
+      Vollständigkeit – Konzernstrukturen und Übernahmen ändern sich.
     </footer>
   </div>
 
 <script>
 (function () {
-  // Marken der Unternehmensgruppe Theo Müller (siehe mueller_marken.md)
-  var theoBrands = [
-    "müller", "müllermilch", "muellermilch",
-    "weihenstephan",
-    "sachsenmilch",
-    "landliebe",
-    "käserei loose", "kaeserei loose", "loose",
-    "bönsel", "boensel",
-    "harzbube",
-    "rusack",
-    "almhof",
-    "elinas",
-    "lünebest", "luenebest",
-    "biotiful gut health", "biotiful",
-    "homann",
-    "nadler",
-    "hamker",
-    "nordsee",
-    "weser-feinkost", "weser feinkost",
-    "lisner",
-    "nordfish",
-    "polarica",
-    "graal",
-    "berief",
-    "culina group", "culina",
-    "milk & more", "milk and more", "milk&more",
-    "naturfarm",
-    "optipack",
-    "fahrzeugtechnik aretsried"
-  ];
-
-  // Bekannte Verwechslungen: NICHT Teil der Unternehmensgruppe Theo Müller
-  var notTheoBrands = {
-    "müller drogeriemarkt": "Das ist die Drogeriekette Müller Handels GmbH & Co. KG – ein eigenständiges Unternehmen, keine Marke von Theo Müller.",
-    "mueller drogeriemarkt": "Das ist die Drogeriekette Müller Handels GmbH & Co. KG – ein eigenständiges Unternehmen, keine Marke von Theo Müller.",
-    "müller drogerie": "Das ist die Drogeriekette Müller Handels GmbH & Co. KG – ein eigenständiges Unternehmen, keine Marke von Theo Müller.",
-    "drogeriemarkt müller": "Das ist die Drogeriekette Müller Handels GmbH & Co. KG – ein eigenständiges Unternehmen, keine Marke von Theo Müller.",
-    "aveo": "Das ist eine Eigenmarke der Drogeriekette Müller – nicht der Unternehmensgruppe Theo Müller.",
-    "body&soul": "Das ist eine Eigenmarke der Drogeriekette Müller – nicht der Unternehmensgruppe Theo Müller.",
-    "body & soul": "Das ist eine Eigenmarke der Drogeriekette Müller – nicht der Unternehmensgruppe Theo Müller.",
-    "terra naturi": "Das ist eine Eigenmarke der Drogeriekette Müller – nicht der Unternehmensgruppe Theo Müller.",
-    "beauty baby": "Das ist eine Eigenmarke der Drogeriekette Müller – nicht der Unternehmensgruppe Theo Müller."
-  };
+  var ISSUES_URL = "https://github.com/sinasafarnezhadian/alles-theo-oder-was-de/issues";
+  var DATA_URL = "data/marken.json";
 
   function normalize(str) {
     return str
@@ -280,60 +251,107 @@
       .replace(/\s+/g, " ");
   }
 
-  var normalizedTheoBrands = theoBrands.map(normalize);
-  var normalizedNotTheo = {};
-  Object.keys(notTheoBrands).forEach(function (key) {
-    normalizedNotTheo[normalize(key)] = notTheoBrands[key];
-  });
-
-  function matches(list, needle) {
-    return list.some(function (brand) {
-      return brand === needle || needle.includes(brand) || brand.includes(needle);
-    });
-  }
-
-  var ISSUES_URL = "https://github.com/sinasafarnezhadian/alles-theo-oder-was-de/issues";
-
-  var form = document.getElementById("check-form");
-  var input = document.getElementById("brand-input");
-  var result = document.getElementById("result");
-  var body = document.body;
-
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-    var raw = input.value;
-    if (!raw.trim()) return;
-
-    var needle = normalize(raw);
-
-    body.classList.remove("result-clean", "result-theo");
-    result.classList.remove("visible");
-
-    var notTheoNote = normalizedNotTheo[needle];
-    var isTheo = !notTheoNote && matches(normalizedTheoBrands, needle);
-    var reportHint = "<span class=\"report\">Ergebnis stimmt nicht? <a href=\"" + ISSUES_URL + "\" target=\"_blank\" rel=\"noopener\">Hier melden</a></span>";
-
-    if (isTheo) {
-      body.classList.add("result-theo");
-      result.innerHTML = "Vorsicht, Produkt gehört Theo" +
-        "<span class=\"sub\">„" + escapeHtml(raw.trim()) + "\" gehört zur Unternehmensgruppe Theo Müller.</span>" +
-        reportHint;
-    } else {
-      body.classList.add("rainbow-box");
-      var sub = notTheoNote || ("„" + escapeHtml(raw.trim()) + "\" steht nicht auf unserer Liste der Theo-Müller-Marken.");
-      result.innerHTML = "Glückwunsch, du hast ein sauberes Produkt." +
-        "<span class=\"sub\">" + sub + "</span>" +
-        reportHint;
-    }
-
-    result.classList.add("visible");
-  });
-
   function escapeHtml(str) {
     var div = document.createElement("div");
     div.textContent = str;
     return div.innerHTML;
   }
+
+  var form = document.getElementById("check-form");
+  var input = document.getElementById("brand-input");
+  var button = form.querySelector("button");
+  var result = document.getElementById("result");
+  var body = document.body;
+
+  // theoIndex: normalisierter Aliasname -> Markendaten (aus data/marken.json)
+  var theoIndex = {};
+  var notTheoIndex = {};
+
+  function indexEntries(target, entries) {
+    entries.forEach(function (entry) {
+      var names = [entry.name].concat(entry.aliases || []);
+      names.forEach(function (name) {
+        target[normalize(name)] = entry;
+      });
+    });
+  }
+
+  function findEntry(index, needle) {
+    if (index[needle]) return index[needle];
+    var found = null;
+    Object.keys(index).some(function (key) {
+      if (needle.includes(key) || key.includes(needle)) {
+        found = index[key];
+        return true;
+      }
+      return false;
+    });
+    return found;
+  }
+
+  button.disabled = true;
+  input.placeholder = "Marken werden geladen…";
+
+  fetch(DATA_URL)
+    .then(function (res) {
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      return res.json();
+    })
+    .then(function (data) {
+      indexEntries(theoIndex, data.brands || []);
+      indexEntries(notTheoIndex, data.not_theo || []);
+      button.disabled = false;
+      input.placeholder = "Marke eingeben, z. B. Weihenstephan…";
+    })
+    .catch(function (err) {
+      input.placeholder = "Markenliste konnte nicht geladen werden";
+      console.error("Konnte " + DATA_URL + " nicht laden:", err);
+    });
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var raw = input.value;
+    if (!raw.trim() || button.disabled) return;
+
+    var needle = normalize(raw);
+
+    body.classList.remove("result-clean", "result-theo", "rainbow-box");
+    result.classList.remove("visible");
+
+    var notTheoEntry = findEntry(notTheoIndex, needle);
+    var theoEntry = !notTheoEntry ? findEntry(theoIndex, needle) : null;
+    var reportHint = "<span class=\"report\">Ergebnis stimmt nicht? <a href=\"" + ISSUES_URL + "\" target=\"_blank\" rel=\"noopener\">Hier melden</a></span>";
+
+    function detailsHtml(entry) {
+      if (!entry) return "";
+      var rows = [];
+      if (entry.category) rows.push("<strong>Bereich:</strong> " + escapeHtml(entry.category));
+      if (entry.company) rows.push("<strong>Gesellschaft:</strong> " + escapeHtml(entry.company));
+      if (entry.note) rows.push("<strong>Hinweis:</strong> " + escapeHtml(entry.note));
+      if (!rows.length) return "";
+      return "<span class=\"details\">" + rows.join("<br>") + "</span>";
+    }
+
+    if (theoEntry) {
+      body.classList.add("result-theo");
+      result.innerHTML = "Vorsicht, Produkt gehört Theo" +
+        "<span class=\"sub\">„" + escapeHtml(raw.trim()) + "\" gehört zur Unternehmensgruppe Theo Müller (" + escapeHtml(theoEntry.name) + ").</span>" +
+        detailsHtml(theoEntry) +
+        reportHint;
+    } else {
+      body.classList.add("rainbow-box");
+      var sub = notTheoEntry
+        ? notTheoEntry.note
+        : ("„" + escapeHtml(raw.trim()) + "\" steht nicht auf unserer Liste der Theo-Müller-Marken.");
+      var notTheoDetails = notTheoEntry ? detailsHtml({ category: notTheoEntry.category, company: notTheoEntry.company }) : "";
+      result.innerHTML = "Glückwunsch, du hast ein sauberes Produkt." +
+        "<span class=\"sub\">" + sub + "</span>" +
+        notTheoDetails +
+        reportHint;
+    }
+
+    result.classList.add("visible");
+  });
 })();
 </script>
 </body>
