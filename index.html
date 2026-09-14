@@ -277,10 +277,20 @@
   }
 
   function findEntry(index, needle) {
+    if (needle.length < 2) return null;
     if (index[needle]) return index[needle];
     var found = null;
     Object.keys(index).some(function (key) {
-      if (needle.includes(key) || key.includes(needle)) {
+      // Ganzer Alias steckt im Suchbegriff (z. B. "Müllermilch Erdbeere 500g")
+      // oder der Suchbegriff trifft ein komplettes Wort eines mehrteiligen Alias
+      // (z. B. "Loose" in "Käserei Loose"). Kein beliebiges Teilstring-Matching,
+      // sonst treffen kurze Eingaben zufällig auf Fragmente wie "as" in "Fast Fruit".
+      if (needle.includes(key)) {
+        found = index[key];
+        return true;
+      }
+      var tokens = key.split(/[\s/]+/).filter(Boolean);
+      if (tokens.indexOf(needle) !== -1) {
         found = index[key];
         return true;
       }
