@@ -17,6 +17,22 @@
     --blue-bg: #0489DB;
     --blue-text: #ffffff;
   }
+  .rainbow-box {
+    background: linear-gradient(
+        90deg,
+        rgba(255, 0, 0, 0.2) 0%,
+        rgba(255, 154, 0, 0.2) 10%,
+        rgba(208, 222, 33, 0.2) 20%,
+        rgba(79, 220, 74, 0.2) 30%,
+        rgba(63, 218, 216, 0.2) 40%,
+        rgba(47, 201, 226, 0.2) 50%,
+        rgba(28, 127, 238, 0.2) 60%,
+        rgba(95, 21, 242, 0.2) 70%,
+        rgba(186, 12, 248, 0.2) 80%,
+        rgba(251, 7, 217, 0.2) 90%,
+        rgba(255, 0, 0, 0.2) 100%
+    )
+}
   * { box-sizing: border-box; }
   body{
     margin: 0;
@@ -57,12 +73,12 @@
     opacity: 0.85;
   }
   .intro{
+    margin-top: 28px;
     background: var(--card);
     color: var(--text);
     border: 1px solid var(--border);
     border-radius: 14px;
     padding: 20px 22px;
-    margin-bottom: 28px;
     line-height: 1.55;
     font-size: 0.98rem;
     transition: opacity .35s ease;
@@ -121,6 +137,12 @@
     font-weight: 800;
     display: none;
     line-height: 1.4;
+    color: var(--text);
+
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
   }
   .result.visible{ display: block; }
   .result .sub{
@@ -130,9 +152,18 @@
     font-weight: 500;
     opacity: 0.9;
   }
+  .result .report{
+    display: block;
+    margin-top: 14px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    opacity: 0.75;
+  }
+  .result .report a{
+    color: inherit;
+  }
 
   footer{
-    margin-top: auto;
     padding-top: 40px;
     text-align: center;
     font-size: 0.78rem;
@@ -261,6 +292,8 @@
     });
   }
 
+  var ISSUES_URL = "https://github.com/sinasafarnezhadian/alles-theo-oder-was-de/issues";
+
   var form = document.getElementById("check-form");
   var input = document.getElementById("brand-input");
   var result = document.getElementById("result");
@@ -278,16 +311,19 @@
 
     var notTheoNote = normalizedNotTheo[needle];
     var isTheo = !notTheoNote && matches(normalizedTheoBrands, needle);
+    var reportHint = "<span class=\"report\">Ergebnis stimmt nicht? <a href=\"" + ISSUES_URL + "\" target=\"_blank\" rel=\"noopener\">Hier melden</a></span>";
 
     if (isTheo) {
       body.classList.add("result-theo");
       result.innerHTML = "Vorsicht, Produkt gehört Theo" +
-        "<span class=\"sub\">„" + escapeHtml(raw.trim()) + "\" gehört zur Unternehmensgruppe Theo Müller.</span>";
+        "<span class=\"sub\">„" + escapeHtml(raw.trim()) + "\" gehört zur Unternehmensgruppe Theo Müller.</span>" +
+        reportHint;
     } else {
-      body.classList.add("result-clean");
+      body.classList.add("rainbow-box");
       var sub = notTheoNote || ("„" + escapeHtml(raw.trim()) + "\" steht nicht auf unserer Liste der Theo-Müller-Marken.");
       result.innerHTML = "Glückwunsch, du hast ein sauberes Produkt." +
-        "<span class=\"sub\">" + sub + "</span>";
+        "<span class=\"sub\">" + sub + "</span>" +
+        reportHint;
     }
 
     result.classList.add("visible");
